@@ -15,7 +15,7 @@ public class ArtworkTest {
 
     @Test
     public void canGetTitle(){
-        assertThat(artwork.getTitle()).isEqualsTo("Cat");
+        assertThat(artwork.getTitle()).isEqualTo("Cat");
     }
 
     @Test
@@ -27,19 +27,27 @@ public class ArtworkTest {
 
     @Test
     public void canGetArtist(){
-        Artist actual = artist.getName();
-        assertThat(actual).isEqualTo("Picasso");
+        Artist actual = artwork.getArtist();
+        assertThat(actual).isEqualTo(artist);
+    }
+
+    @Test
+    public void canSetArtist(){
+        Artist michelangelo = new Artist("Michelangelo");
+        artwork.setArtist(michelangelo);
+        Artist actual = artwork.getArtist();
+        assertThat(actual).isEqualTo(michelangelo);
     }
 
     @Test
     public void canGetPrice(){
-        assertThat(artwork.getPrice()).isEqualsTo(100);
+        assertThat(artwork.getPrice()).isEqualTo(100);
     }
 
     @Test
     public void canSetPrice(){
         artwork.setPrice(1);
-        String price = artwork.getPrice();
+        int price = artwork.getPrice();
         assertThat(price).isEqualTo(1);
     }
 
