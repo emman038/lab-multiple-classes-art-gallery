@@ -68,4 +68,16 @@ public class GalleryTest {
         assertThat(gallery.getStock()).isEqualTo(stock2);
     }
 
+    @Test
+    public void canSellStock(){
+         gallery.sellStock(dame);
+         assertThat(gallery.getStock().size()).isEqualTo(2);
+    }
+
+    @Test
+    public void addTill(){
+         gallery.addTill(100);
+         assertThat(gallery.getTill()).isEqualTo(10100);
+    }
+
  }

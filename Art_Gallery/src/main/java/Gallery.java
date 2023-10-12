@@ -10,6 +10,13 @@ public class Gallery {
    this.till = till;
    this.stock = stock;
   }
+  public void sellStock(Artwork artworkSold) {
+      stock.remove(artworkSold);
+  }
+
+  public void addTill(int amount){
+      this.till += amount;
+  }
 
   public String getName() {
    return this.name;
