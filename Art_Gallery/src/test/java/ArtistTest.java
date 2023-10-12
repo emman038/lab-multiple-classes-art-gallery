@@ -23,6 +23,4 @@ public class ArtistTest {
         String expected = "Michelangelo";
         assertThat(actual).isEqualTo(expected);
     }
-
-    
 }
