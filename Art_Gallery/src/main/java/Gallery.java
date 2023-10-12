@@ -1,2 +1,2 @@
-public class Gallery {
-}
+// public class Gallery {
+// }
