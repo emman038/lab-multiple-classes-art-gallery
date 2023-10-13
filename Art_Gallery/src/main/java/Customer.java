@@ -12,12 +12,13 @@ public class Customer {
    }
 
    public void buyArtwork(String artworkName, Gallery gallery) {
-       if (gallery.checkStock(artworkName) != null){
-           if (canBuy(gallery.checkStock(artworkName))){
-               gallery.sellStock(gallery.checkStock(artworkName));
-               withdraw(gallery.checkStock(artworkName).getPrice());
-               gallery.addOrRemoveMoneyFromTill(gallery.checkStock(artworkName).getPrice());
-               modifyArtCollection(gallery.checkStock(artworkName));
+       Artwork artworkTitle = gallery.checkStock(artworkName);
+       if (artworkTitle != null){
+           if (canBuy(artworkTitle)){
+               gallery.sellStock(artworkTitle);
+               withdraw(artworkTitle.getPrice());
+               gallery.addOrRemoveMoneyFromTill(artworkTitle.getPrice());
+               modifyArtCollection(artworkTitle);
            }
        }
        gallery.stockTake();
