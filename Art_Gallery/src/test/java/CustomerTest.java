@@ -2,6 +2,7 @@ import org.junit
         .jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -18,6 +19,16 @@ public class CustomerTest {
 
     @BeforeEach
     public void setUp() {
+        artist = new Artist("Michelangelo");
+
+        dame = new Artwork("dame", artist, 100);
+        curry = new Artwork("curry", artist, 1000);
+        lebron = new Artwork("lebron", artist, 5000);
+
+        stock = new ArrayList<>(Arrays.asList(lebron, curry, dame));
+
+        gallery = new Gallery("Louvre", 10000, stock);
+
         customer = new Customer("John", 100000);
     }
 
@@ -44,6 +55,20 @@ public class CustomerTest {
     }
 
     @Test
+    public void canGetArtCollection(){
+        ArrayList<Artwork> artwork = new ArrayList<>(Arrays.asList(dame));
+        customer.setArtCollection(artwork);
+        assertThat(customer.getArtCollection()).isEqualTo(artwork);
+    }
+
+    @Test
+    public void canModifyArtCollection(){
+        customer.modifyArtCollection(dame);
+        ArrayList<Artwork> expected = new ArrayList<>(Arrays.asList(dame));
+        assertThat(customer.getArtCollection()).isEqualTo(expected);
+    }
+
+    @Test
     public void canWithdraw(){
         customer.withdraw(10000);
         assertThat(customer.getWallet()).isEqualTo(90000);
@@ -55,20 +80,10 @@ public class CustomerTest {
 //        stock reduces by 1
 //        money in wallet reduces
 //        money in till increases
-        artist = new Artist("Michelangelo");
-
-        dame = new Artwork("dame", artist, 100);
-        curry = new Artwork("curry", artist, 1000);
-        lebron = new Artwork("lebron", artist, 5000);
-
-        stock = new ArrayList<>(Arrays.asList(lebron, curry, dame));
-
-        gallery = new Gallery("Louvre", 10000, stock);
 
         customer.buyArtwork("dame", gallery);
 
         int expected = 100000 - dame.getPrice();
         assertThat(customer.getWallet()).isEqualTo(expected);
     }
-
 }

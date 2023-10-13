@@ -14,6 +14,14 @@ public class Gallery {
       stock.remove(artworkSold);
   }
 
+  public int stockTake(){
+      int total = 0;
+      for (Artwork artwork : stock){
+          total += artwork.getPrice();
+      }
+      return total;
+  }
+
   public void addTill(int amount){
       this.till += amount;
   }

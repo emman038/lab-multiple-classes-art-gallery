@@ -56,11 +56,11 @@ public class GalleryTest {
 
     @Test
     public void canSetStock(){
-        artist = new Artist("Michelangelo");
+        Artist artist2 = new Artist("Michelangelo");
 
-        Artwork szobo = new Artwork("Szobo", artist, 100);
-        Artwork endo = new Artwork("Endo", artist, 1000);
-        Artwork salah = new Artwork("Salah", artist, 5000);
+        Artwork szobo = new Artwork("Szobo", artist2, 100);
+        Artwork endo = new Artwork("Endo", artist2, 1000);
+        Artwork salah = new Artwork("Salah", artist2, 5000);
 
         ArrayList<Artwork> stock2 = new ArrayList<>(Arrays.asList(szobo, endo, salah));
 
@@ -72,6 +72,11 @@ public class GalleryTest {
     public void canSellStock(){
          gallery.sellStock(dame);
          assertThat(gallery.getStock().size()).isEqualTo(2);
+    }
+
+    @Test
+    public void canStockTake(){
+         assertThat(gallery.stockTake()).isEqualTo(6100);
     }
 
     @Test
