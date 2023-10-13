@@ -10,6 +10,16 @@ public class Gallery {
    this.till = till;
    this.stock = stock;
   }
+
+  public Artwork checkStock(String artworkName){
+      for (Artwork artwork : stock){
+          if (artworkName.equals(artwork.getTitle())){
+              return artwork;
+          }
+      }
+      return null;
+  }
+
   public void sellStock(Artwork artworkSold) {
       stock.remove(artworkSold);
   }
@@ -22,7 +32,7 @@ public class Gallery {
       return total;
   }
 
-  public void addTill(int amount){
+  public void addOrRemoveMoneyFromTill(int amount){
       this.till += amount;
   }
 

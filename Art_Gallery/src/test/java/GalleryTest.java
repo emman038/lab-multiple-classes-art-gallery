@@ -80,8 +80,8 @@ public class GalleryTest {
     }
 
     @Test
-    public void addTill(){
-         gallery.addTill(100);
+    public void canAddOrRemoveMoneyFromTill(){
+         gallery.addOrRemoveMoneyFromTill(100);
          assertThat(gallery.getTill()).isEqualTo(10100);
     }
 
